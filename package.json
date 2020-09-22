@@ -1,0 +1,20 @@
+{
+  "name": "hdc-agency",
+  "version": "1.0.0",
+  "description": "Criando um site usando bootstrap, parallax, font-awesome e progressbar no canal [Matheus Battisti - Hora de Codar](https://www.youtube.com/channel/UCDoFiMhpOnLFq1uG4RL4xag)",
+  "main": "jquery-3.5.1.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eugeniocarvalho/hdc-agency.git"
+  },
+  "keywords": [],
+  "author": "Eugênio Carvalho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eugeniocarvalho/hdc-agency/issues"
+  },
+  "homepage": "https://github.com/eugeniocarvalho/hdc-agency#readme"
+}
