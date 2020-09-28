@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
   const containerA = document.getElementById('circleA')
   const containerB = document.getElementById('circleB')
   const containerC = document.getElementById('circleC')
@@ -8,10 +8,10 @@ $(function() {
     color: '#64daf9',
     strokeWidth: 8,
     duration: 1400,
-    from: {color: '#AAA'},
-    to: {color: '#65daf9'},
+    from: { color: '#AAA' },
+    to: { color: '#65daf9' },
 
-    step: function(state, circle) {
+    step: function (state, circle) {
       circle.path.setAttribute('stroke', state.color)
 
       const value = Math.round(circle.value() * 160);
@@ -19,15 +19,15 @@ $(function() {
       circle.setText(value)
     }
   })
-  
+
   const circleB = new ProgressBar.Circle(containerB, {
     color: '#64daf9',
     strokeWidth: 8,
     duration: 1800,
-    from: {color: '#aaa'},
-    to: {color: '#65daf9'},
+    from: { color: '#aaa' },
+    to: { color: '#65daf9' },
 
-    step: function(state, circle) {
+    step: function (state, circle) {
       circle.path.setAttribute('stroke', state.color)
 
       const value = Math.round(circle.value() * 7093)
@@ -40,10 +40,10 @@ $(function() {
     color: '#64daf9',
     strokeWidth: 8,
     duration: 2200,
-    from: {color: '#aaa'},
-    to: {color: '#65daf9'},
+    from: { color: '#aaa' },
+    to: { color: '#65daf9' },
 
-    step: function(state, circle) {
+    step: function (state, circle) {
       circle.path.setAttribute('stroke', state.color)
 
       const value = Math.round(circle.value() * 430)
@@ -56,10 +56,10 @@ $(function() {
     color: '#64daf9',
     strokeWidth: 8,
     duration: 2600,
-    from: {color: '#aaa'},
-    to: {color: '#65daf9'},
+    from: { color: '#aaa' },
+    to: { color: '#65daf9' },
 
-    step: function(state, circle){
+    step: function (state, circle) {
       circle.path.setAttribute('stroke', state.color)
 
       const value = Math.round(circle.value() * 10320)
@@ -72,7 +72,7 @@ $(function() {
   const dataAreaOffset = $('#data-area').offset()
   let stop = 0
 
-  $(window).scroll(function(e) {
+  $(window).scroll(function (e) {
     const scroll = $(window).scrollTop()
 
     if (scroll > (dataAreaOffset.top - 500) && stop === 0) {
@@ -85,8 +85,40 @@ $(function() {
   })
 
   // Parallax
-  setTimeout(function(){
-    $('#data-area').parallax({imageSrc: 'img/cidadeparallax.png'})
-    $('#apply-area').parallax({imageSrc: 'img/pattern.png'})
+  setTimeout(function () {
+    $('#data-area').parallax({ imageSrc: 'img/cidadeparallax.png' })
+    $('#apply-area').parallax({ imageSrc: 'img/pattern.png' })
   }, 250)
+
+  // Filtro do portfolio
+  $('.filter-btn').on('click', function () {
+    let type = $(this).attr('id')
+    let boxes = $('.project-box')
+
+    $('.main-btn').removeClass('active')
+    $(this).addClass('active')
+
+    if (type === 'dsg-btn')
+      eachBoxes('dsg', boxes)
+    else
+      if (type === 'dev-btn')
+        eachBoxes('dev', boxes)
+      else
+        if (type === 'seo-btn')
+          eachBoxes('seo', boxes)
+        else
+          eachBoxes('all', boxes)
+  })
+
+  function eachBoxes(type, boxes) {
+    if (type === 'all')
+      $(boxes).fadeIn()
+    else
+      $(boxes).each(function () {
+        if (!$(this).hasClass(type))
+          $(this).fadeOut('fast')
+        else
+          $(this).fadeIn()
+      })
+  }
 })
